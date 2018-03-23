@@ -1,0 +1,220 @@
+html {
+  font-size: 14px;
+
+  @media(min-width: @screen-sm) {
+    font-size: 15px;
+  }
+
+  @media(min-width: @screen-lg) {
+    font-size: 16px;
+  }
+}
+
+
+body {
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+  background: #f8f8f8;
+}
+
+
+// html, body, .site-wrap {
+//   height: 100%,
+// }
+
+
+// site-wrap
+.site-wrap {
+  position: relative;
+  z-index: 10;
+  max-width: 1920px;
+  margin: 0 auto;
+  box-shadow: 0 0 50px fade(#000, 10%);
+  background: @gray;
+
+  // header height
+  padding-top: 52px;
+
+  .content-wrap {
+    background: #fff;
+  }
+}
+
+
+// header
+.header {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: 1920px;
+  margin: 0 auto;
+  transition: all .3s;
+  transform: translate3d(0,0,0);
+  will-change: transform;
+
+  // default style
+  background: #fff;
+  border-bottom: 2px solid @primary-color;
+  box-shadow: 0 0 15px 0 fade(#000, 20%);
+}
+
+
+// default block styling
+.block {
+  background: #fff;
+  color: @gray;
+  padding: 40px 0;
+  font-size: 1.1rem;
+
+  @media (min-width: @screen-sm) {
+    padding: 80px 0;
+  }
+
+  @media (min-width: @screen-lg) {
+    padding: 110px 0;
+  }
+
+  h1, .h1, h2, .h2, h3, .h3 {
+    color: @gray-darker;
+  }
+}
+.block-small {
+  .block();
+  padding: 20px 0;
+
+  @media (min-width: @screen-sm) {
+    padding: 50px 0;
+  }
+
+  @media (min-width: @screen-lg) {
+    padding: 70px 0;
+  }
+}
+
+
+// button styles
+.btn {
+  border-radius: 2px;
+  transition: all .3s ease;
+  text-decoration: none;
+
+  &.btn-primary {
+    color: #fff;
+  }
+
+  &.btn-wide {
+    padding-left: 20px;
+    padding-right: 20px;
+
+    @media (min-width: @screen-sm) {
+      padding-left: 35px;
+      padding-right: 35px;
+    }
+
+    @media (min-width: @screen-lg) {
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+  }
+}
+
+
+// animation delay used with animate.css
+.anim-delay-100 { animation-delay: 0.1s; }
+.anim-delay-200 { animation-delay: 0.2s; }
+.anim-delay-300 { animation-delay: 0.3s; }
+.anim-delay-400 { animation-delay: 0.4s; }
+.anim-delay-500 { animation-delay: 0.5s; }
+
+
+// bootstrap row modifiers
+.no-gutter {
+  margin-left: 0;
+  margin-right: 0;
+
+  & > div[class^="col-"] {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.small-gutter {
+  margin-left: -3px;
+  margin-right: -3px;
+
+  & > div[class^="col-"] {
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+}
+
+
+// img reset
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/******************************************************************
+H1, H2, H3, H4, H5 STYLES
+******************************************************************/
+
+h1, .h1 {
+  font-size: 2em;
+}
+
+h2, .h2 {
+  font-size: 1.8em;
+}
+
+h3, .h3 {
+  font-size: 1.4em;
+}
+
+h4, .h4 {
+  font-size: 1.2em;
+}
+
+h5, .h5 {
+  font-size: 1em;
+}
+
+h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5, p, ul, ol {
+  margin: 1em 0 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+/*********************
+LINK STYLES
+*********************/
+
+a, a:visited {
+  color: @text-color;
+  text-decoration: none;
+	/* on hover */
+	&:hover, &:focus {
+    color: @text-color;
+    text-decoration: none;
+  }
+
+	/* on click */
+	&:active {}
+
+	/* mobile tap color */
+	&:link {
+		/*
+		this highlights links on iPhones/iPads.
+		so it basically works like the :hover selector
+		for mobile devices.
+		*/
+	}
+}

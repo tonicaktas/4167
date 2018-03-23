@@ -1,0 +1,1 @@
+jQuery(document).ready(function($){var i=$(window).width();if(i>=1441)var r=skrollr.init();if(i>=1340)var r=skrollr.init()});

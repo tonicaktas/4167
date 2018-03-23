@@ -1,0 +1,113 @@
+//  jQuery
+//
+// $('[data-pop-toggle]').click(function() {
+//   var pop = '#' + $(this).attr('data-pop-toggle');
+//   $(pop).addClass('open');
+//   $('body').addClass('prevent-scroll')
+// });
+//
+// $('.pop-close').click(function() {
+//   $(this).parent('.pop-wrap').removeClass('open');
+//   $('body').removeClass('prevent-scroll')
+// });
+//
+//  HTML
+//
+// <div id="bli-uppringd-pop" class="pop-wrap">
+//   <div class="pop-close">
+//     <i class="icon ion-ios-close-empty"></i>
+//   </div>
+//
+//   <div class="pop-content">
+//      content
+//   </div>
+// </div>
+//
+// Toggle pop
+// <a href="#" data-pop-toggle="bli-uppringd-pop"><i class="icon ion-ios-telephone"></i></a>
+
+.prevent-scroll {
+  overflow: hidden;
+  height: 100%;
+}
+
+.pop-wrap {
+  z-index: 10000;
+  position: fixed;
+  top: 100%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  transform: translate3d(0,0,0);
+  will-change: transform;
+  opacity: 1;
+  transition: all .3s ease, top 1ms ease .3s;
+
+  background: #000;
+  background: fade(#000, 85%);
+  color: #fff;
+  opacity: 0;
+
+  &.open {
+    opacity: 1;
+    top: 0;
+    transition: all .3s ease, top 1ms ease;
+
+    .pop-close {
+      transform: translateX(0);
+    }
+
+    .pop-content {
+      transform: translate(0);
+    }
+  }
+
+  .pop-close {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    font-size: 37px;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    background: fade(#fff, 80%);
+    color: #000;
+    transform: translateX(10px);
+    transition: all .3s ease;
+    cursor: pointer;
+
+    @media (min-width: @screen-sm) {
+      top: 15px;
+      right: 15px;
+    }
+
+    &:hover {
+      background: #fff;
+    }
+  }
+
+  .pop-content {
+    padding: 15px 0 25px;
+    transition: all .3s ease;
+    overflow: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    transform: translateY(10px);
+    height: 100vh;
+    width: 90%;
+    max-width: 1000px;
+    height: 100vh;
+    margin: 0 auto;
+
+    @media (min-width: @screen-lg) {
+      padding-top: 80px;
+    }
+
+    a {
+      color: #fff;
+    }
+  }
+}

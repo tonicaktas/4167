@@ -1,0 +1,262 @@
+/*
+$('.menu-btn').click(function() {
+  $('body').toggleClass('offcanvas-open');
+  setTimeout(function() {
+    $('.current-page-ancestor > a').click();
+  }, 300);
+  if ($('.page-id-5')[0]) {
+    setTimeout(function() {
+      $('.menu-item-72 > a').click();
+    }, 300);
+  }
+});
+*/
+@menu-width: 270px;
+
+html,
+body,
+.offcanvas {
+  height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+
+  &.offcanvas-open {
+    .site-wrap,
+    .offcanvas,
+    .menu-btn,
+    .float-buttons {
+      transform: translate3d(-100%,0,0);
+
+      @media (min-width: @screen-sm) {
+        transform: translate3d(-@menu-width,0,0);
+      }
+    }
+
+    .menu-btn {
+      span {
+        &:nth-child(2) {
+          transform: translate(0,14px) rotate(45deg);
+        }
+
+        &:nth-child(3) {
+          opacity: 0;
+          transform:  scale(0.1) rotate(180deg);
+        }
+
+        &:nth-child(4) {
+          transform: translate(0,-14px) rotate(-45deg);
+        }
+      }
+    }
+  }
+}
+
+.site-wrap {
+  position: relative;
+  .transition(all .5s ease);
+  .box-shadow(0 0 15px fade(#000,20%));
+
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.offcanvas {
+  position: fixed;
+  z-index: 5000;
+  top: 0;
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  background: #fff;
+  overflow: scroll;
+  will-change: transform;
+  .transition(all .5s ease);
+  .box-shadow(0 0 25px rgba(0,0,0,.1));
+
+  @media (min-width: @screen-sm) {
+    width: @menu-width;
+    right: -@menu-width;
+  }
+
+  .heading {
+    display: block;
+    margin: 0;
+    border-bottom: 1px solid #eee;
+    padding: 0 10px;
+    line-height: 100px;
+    text-align: center;
+    font-weight: 100;
+    font-size: 40px;
+    color: #999;
+  }
+
+  .menu-logo {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    padding: 30px;
+  }
+
+  .navbar {
+    border: none;
+
+    .nav {
+      width: 100%;
+      margin: 6.25px 0;
+
+      & > li {
+        @media (min-width: @screen-sm) {
+          margin-bottom: 10px;
+        }
+      }
+
+      li {
+        display: block;
+        float: none;
+
+        a {
+          display: block;
+          padding: 10px 15px;
+          transition: all .2s ease;
+          font-size: 20px;
+          text-align: center;
+
+          @media (min-width: @screen-sm) {
+            text-align: left;
+          }
+        }
+
+        &.current_page_item {
+          a {
+            border-left: 3px solid @primary-color;
+          }
+        }
+      }
+    }
+  }
+
+  .tb-dropdown {
+
+    .dropdown-menu {
+      position: relative;
+      top: auto;
+      right: auto;
+      bottom: auto;
+      left: auto;
+      display: none;
+      float: none;
+      box-shadow: none;
+      margin: 0;
+      padding: 0;
+      max-width: none;
+      overflow: hidden;
+      border-radius: 0;
+      border-width: 1px 0 1px 0;
+
+      li {
+
+        & > .dropdown-menu {
+          a {
+            padding-left: 35px;
+          }
+        }
+
+        a {
+          font-weight: 400;
+          font-size: 15px;
+          color: @primary-color;
+          padding-left: 25px;
+
+          &:hover,
+          &:focus {
+            color: @primary-color;
+            background: #eee;
+          }
+        }
+      }
+
+      & > .active {
+        a {
+          background: @primary-color;
+          color: #fff;
+
+          &:hover {
+            background: @primary-color;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  .current-menu-parent {
+    border-left: 2px solid @primary-color;
+  }
+
+  .mobile-close {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @media (min-width: @screen-sm) {
+      display: none;
+    }
+
+    span {
+      display: block;
+      height: 2px;
+      background: #666;
+
+      &:nth-child(1) {
+        transform: rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        transform: rotate(-45deg) translateY(-2px);
+      }
+    }
+  }
+}
+
+// knappen
+.menu-btn {
+  position: relative;
+  display: block;
+  width: 45px;
+  height: 30px;
+  cursor: pointer;
+  float: right;
+  transition: all .5s ease;
+
+  span {
+    .transition(all .5s ease);
+    display: block;
+    background: @primary-color;
+    width: 100%;
+    height: 2px;
+    margin-bottom: 12px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  p {
+    position: absolute;
+    display: block;
+    font-size: 28px;
+    color: @primary-color;
+    right: 135%;
+    margin: 0;
+    line-height: 1;
+    transition: all .5s ease;
+  }
+}
